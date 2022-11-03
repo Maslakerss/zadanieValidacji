@@ -131,7 +131,10 @@ function validate() {
             //isbn
         }
     });
-
+    if (!AllValuesChecked) {
+        alert("Zle wprowadzone Dane")
+    }
+    
     console.log(AllValuesChecked)
     console.log(Values)
 }
