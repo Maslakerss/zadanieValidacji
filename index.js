@@ -3,7 +3,10 @@ const input = document.querySelectorAll("input")
 const submit = document.querySelector("input[type=submit]")
 const select = document.querySelector("select")
 
+const output = document.getElementById("output")
+
 let AllValuesChecked = false
+let WrongValues = []
 let Values = []
 
 
@@ -29,10 +32,6 @@ input.forEach(child => {
 
 document.onsubmit = (event) => {
     event.preventDefault()
-    
-    if (!AllValuesChecked) {
-        alert("Zle wprowadzone Dane")
-    }
 }
 
 
@@ -58,11 +57,15 @@ function updateValues() {
 
 function validate() {
     AllValuesChecked = (Values.length == 13)
+    WrongValues = []
 
     Values.forEach( (element, index) => {  
         if (element == undefined || element == null || element == "") {
-            if (index != 2 && index != 6 && index != 11)
+            if (!(index == 2 || index == 6 || index == 11)) {
                 AllValuesChecked = false
+
+                WrongValues.push(input[index].name)
+            }
         }
 
         if (index == 2 && AllValuesChecked) {
@@ -72,6 +75,8 @@ function validate() {
                 if (age) {
                     if ( !(age < 150 && age >= 0)) {
                         AllValuesChecked = false
+
+                        WrongValues.push(input[index].name)
                     }
                 }
             }
@@ -84,6 +89,8 @@ function validate() {
 
             if (!peselList || peselList.length != 11) {
                 AllValuesChecked = false
+
+                WrongValues.push(input[index].name)
             }
 
             let year = peselList[0] + peselList[1]
@@ -95,6 +102,8 @@ function validate() {
 
             if((date.getMonth() + 1) != parseInt(month) || !date) {
                 AllValuesChecked = false
+
+                WrongValues.push(input[index].name)
             }
 
             
@@ -106,6 +115,8 @@ function validate() {
 
             if ( 10 - parseInt(sum[sum.length-1]) == parseInt(peselList[peselList.length - 1]))  {
                 AllValuesChecked = false
+
+                WrongValues.push(input[index].name)
             }
             
         }
@@ -113,6 +124,8 @@ function validate() {
         if (index == 5 && AllValuesChecked) {
             if (element.length != 9) {
                 AllValuesChecked = false
+
+                WrongValues.push(input[index].name)
             }
         }
 
@@ -122,6 +135,8 @@ function validate() {
 
             if (element.length != 13) {
                 AllValuesChecked = false
+
+                WrongValues.push(input[index].name)
             }
 
             for(let i = 0; i < 12; i++) {
@@ -130,12 +145,19 @@ function validate() {
 
             if ((sum % 10) == 0 ||  10 - (sum % 10) != element[12] ) {
                 AllValuesChecked = false
-            }
 
-            //isbn
+                WrongValues.push(input[index].name)
+            }
         }
     });
-    
+
+    if (!AllValuesChecked) {
+        output.innerHTML = WrongValues
+    }
+    else {
+        output.innerHTML = ""
+    }
+
     console.log(AllValuesChecked)
     console.log(Values)
 }
