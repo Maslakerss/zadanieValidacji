@@ -29,6 +29,10 @@ input.forEach(child => {
 
 document.onsubmit = (event) => {
     event.preventDefault()
+    
+    if (!AllValuesChecked) {
+        alert("Zle wprowadzone Dane")
+    }
 }
 
 
@@ -131,9 +135,6 @@ function validate() {
             //isbn
         }
     });
-    if (!AllValuesChecked) {
-        alert("Zle wprowadzone Dane")
-    }
     
     console.log(AllValuesChecked)
     console.log(Values)
