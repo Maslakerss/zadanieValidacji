@@ -103,8 +103,6 @@ function validate() {
             if ( 10 - parseInt(sum[sum.length-1]) == parseInt(peselList[peselList.length - 1]))  {
                 AllValuesChecked = false
             }
-
-            print(AllValuesChecked)
             
         }
 
@@ -123,10 +121,10 @@ function validate() {
             }
 
             for(let i = 0; i < 12; i++) {
-                sum += wage[(i % 2)] * parseInt(element[i])
+                sum += wages[(i % 2)] * parseInt(element[i])
             }
 
-            if ((sum % 10) != 0 ||  10 - (sum % 10) == element[12] ) {
+            if ((sum % 10) == 0 ||  10 - (sum % 10) != element[12] ) {
                 AllValuesChecked = false
             }
 
