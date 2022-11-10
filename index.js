@@ -5,6 +5,12 @@ const select = document.querySelector("select")
 
 const output = document.getElementById("output")
 
+
+const markin = document.getElementById('markin')
+const markout = document.getElementById('markout')
+
+
+
 let AllValuesChecked = false
 let WrongValues = []
 let Values = []
@@ -18,44 +24,53 @@ Values.pop()
 Values.push(select.value)
 
 
-
 document.onload = () => {
     validate()
 }
 
 
-
 input.forEach(child => {
-    child.addEventListener("change", validate)
+    child.addEventListener("change", () => {
+        updateValues();
+        
+        validate();
+    })
 })
 
 
 document.onsubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 }
 
 
 submit.addEventListener("click", () => {
-    updateValues()
+    updateValues();
 
-    validate()
+    validate(true);
 })
 
 
 
 function updateValues() {
-    Values = []
+    Values = [];
 
     input.forEach(child => {
-        Values.push(child.value)
+        Values.push(child.value);
     });
 
-    Values.pop()
-    Values.push(select.value)
+    Values.pop();
+    Values.push(select.value);
 }
 
 
-function validate() {
+function startAnim() {
+    markin.setAttribute('scrollamount', "15")
+    markout.setAttribute('scrollamount', "15")
+}
+
+
+
+function validate(submit=false) {
     AllValuesChecked = (Values.length == 13)
     WrongValues = []
 
@@ -151,12 +166,15 @@ function validate() {
         }
     });
 
-    if (!AllValuesChecked) {
-        output.innerHTML = WrongValues
+    
+    output.innerHTML = WrongValues
+
+    if(AllValuesChecked && submit) {
+        alert("Wszystkie Dane zostały przeslane")
+
+        startAnim()
     }
-    else {
-        output.innerHTML = ""
-    }
+
 
     console.log(AllValuesChecked)
     console.log(Values)

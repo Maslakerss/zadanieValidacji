@@ -4,34 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Walidacja</title>
+
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
     <form id="form">
-        <input required type="text" name="imie" placeholder="Imie"><br>
-        <input required type="text" name="nazwisko" placeholder="Nazwisko"><br>
-        <input type="number" name="wiek" placeholder="Wiek" ><br>
-        <input required type="email" name="email" placeholder="email"><br>
-        <input required type="number" name="pesel" placeholder="pesel" maxlength="11"><br>
-        <select required name="plec"><br>
-            <option value="M">Mezczyzna</option>
-            <option value="K">Kobieta</option>
-            <option value="I">Inna</option>
-        </select><br>
+        <marquee id="markout" behavior="alternate" direction="up" scrollamount="0">
+            <marquee id="markin" behavior="alternate" direction="right" scrollamount="0">
 
-        <input type="number" name="telefon" placeholder="telefon" maxlength="9"><br>
-        <input type="text" name="klasa" placeholder="klasa"><br>
-        <input type="text" name="ksiazka" placeholder="ksiazka"><br>
-        <input type="text" name="wydawca" placeholder="wydawca"><br>
-        <input type="number" name="isbn" placeholder="isbn"><br>
-        <input type="number" name="numer_ewidencyjny" id="numer_ewidencyjny" placeholder="Numer Ewidencyjny"><br>
-        <input type="textarea" name="uwagi" id="uwagi" placeholder="uwagi"><br>
+                <label>
+                    <label>Imie<input required type="text" name="imie" placeholder="Imie"></label><br>
+                    <label>Nazwisko<input required type="text" name="nazwisko" placeholder="Nazwisko"></label><br>
+                    <label>Wiek<input type="number" name="wiek" placeholder="Wiek" ></label><br>
+                    <label>Email<input required type="email" name="email" placeholder="email"></label><br>
+                    <label>Pesel<input required type="number" name="pesel" placeholder="pesel" maxlength="11"></label><br>
+                    <label>Płeć<select required name="plec"><br>
+                        <option value="M">Mężczyzna</option>
+                        <option value="K">Kobieta</option>
+                        <option value="I">Inna</option>
+                    </select></label><br>
 
-        <input type="submit">
+                    <label>Telefon<input type="number" name="telefon" placeholder="telefon" maxlength="9"></label><br>
+                    <label>Klasa<input type="text" name="klasa" placeholder="klasa"></label><br>
+                    <label>Książka<input type="text" name="ksiazka" placeholder="książka"></label><br>
+                    <label>Wydawca<input type="text" name="wydawca" placeholder="wydawca"></label><br>
+                    <label>Isbn<input type="number" name="isbn" placeholder="isbn"></label><br>
+                    <label>Numer Ewidencyjny<input type="number" name="numer_ewidencyjny" id="numer_ewidencyjny" placeholder="Numer Ewidencyjny"></label><br>
+                    <label>Uwagi<input type="textarea" name="uwagi" id="uwagi" placeholder="uwagi"></label><br>
+
+                </label>
+
+                <input class="submit" type="submit">
+
+            </marquee>
+        </marquee>
     </form>
 
     <div>
-        <h3>Zle Dane:</h3>
+        <h3>Złe Dane:</h3>
         <p id="output"></p>
     </div>
 
