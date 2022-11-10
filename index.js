@@ -65,7 +65,10 @@ function updateValues() {
 
 function startAnim() {
     markin.setAttribute('scrollamount', "15")
+
+
     markout.setAttribute('scrollamount', "15")
+    markout.style.height = "1000px";
 }
 
 
